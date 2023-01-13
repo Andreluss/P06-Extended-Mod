@@ -107,6 +107,7 @@ public class XUIFloatAdjuster : XUIItem
 
 	public XUIFloatAdjuster(string name, XValue<float> BindTo, float stepL = -0.25f, float stepR = 0.5f, int precision = 3, float minValue = float.NegativeInfinity, float maxValue = float.PositiveInfinity)
 	{
+		XUIFloatAdjuster reference = this;
 		this.MinValue = minValue;
 		this.MaxValue = maxValue;
 		this.BindedXValue = BindTo;
@@ -116,36 +117,36 @@ public class XUIFloatAdjuster : XUIItem
 		this.Value = BindTo.Value;
 		this.inputField.onSubmit.AddListener(delegate(string s)
 		{
-			this.ApplyChanges = true;
+			reference.ApplyChanges = true;
 			XDebug.Instance.Invoke(delegate
 			{
-				this.inputField.interactable = false;
-				this.inputField.interactable = true;
+				reference.inputField.interactable = false;
+				reference.inputField.interactable = true;
 			}, 0f);
 		});
 		this.inputField.onEndEdit.AddListener(delegate(string s)
 		{
-			if (!this.ApplyChanges || string.IsNullOrEmpty(s))
+			if (!reference.ApplyChanges || string.IsNullOrEmpty(s))
 			{
-				this.Value = BindTo.Value;
+				reference.Value = BindTo.Value;
 			}
 			else
 			{
-				BindTo.Value = this.Clamped(float.Parse(s.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat));
+				BindTo.Value = reference.Clamped(float.Parse(s.Replace(',', '.'), CultureInfo.InvariantCulture.NumberFormat));
 			}
-			this.ApplyChanges = false;
+			reference.ApplyChanges = false;
 		});
 		this.L.onClick.AddListener(delegate()
 		{
-			BindTo.Value = this.Clamped(BindTo.Value + stepL);
+			BindTo.Value = reference.Clamped(BindTo.Value + stepL);
 		});
 		this.R.onClick.AddListener(delegate()
 		{
-			BindTo.Value = this.Clamped(BindTo.Value + stepR);
+			BindTo.Value = reference.Clamped(BindTo.Value + stepR);
 		});
 		BindTo.OnChangeValue += delegate(float newValue)
 		{
-			this.Value = newValue;
+			reference.Value = newValue;
 		};
 	}
 
