@@ -68,7 +68,7 @@ public class XUIToggleButton : XUIItem
 
 	public XUIToggleButton(string name, XValue<bool> BindTo)
 	{
-		XUIToggleButton <>4__this = this;
+		XUIToggleButton reference = this;
 		this.BindedXValue = BindTo;
 		this.BuildVisuals(name);
 		base.Name = name;
@@ -79,7 +79,7 @@ public class XUIToggleButton : XUIItem
 		});
 		BindTo.OnChangeValue += delegate(bool to)
 		{
-			<>4__this.State = to;
+			reference.State = to;
 		};
 	}
 
