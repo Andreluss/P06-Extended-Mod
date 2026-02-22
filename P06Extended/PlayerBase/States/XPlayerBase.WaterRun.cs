@@ -31,6 +31,7 @@
         public static bool CanWaterRun()
         {
             if (!CheckGameState()) return false;
+            if (!XDebug.Instance.Moveset_FreeWaterSliding.Value) return false;
             if (XI.WaterRunState.active) return false;
             if (I.I.IsGrounded()) return false;
             //if (I.I.GetPrefab("snow_board")) return false;
