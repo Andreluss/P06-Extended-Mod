@@ -116,6 +116,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\XDebug.cs" />
+    <Compile Include="Core\XDebug.Settings.cs" />
+    <Compile Include="Core\XDebug.Hotkeys.cs" />
+    <Compile Include="Core\XDebug.Helpers.cs" />
+    <Compile Include="Core\XDebug.Fields.cs" />
+    <Compile Include="Core\XDebug.DebugTools.cs" />
+    <Compile Include="Core\XDebug.SpeedMultiplier.cs" />
+    <Compile Include="Core\XDebug.Cheats.cs" />
+    <Compile Include="Core\XDebug.Cfg.cs" />
     <Compile Include="Effects\XEffects.cs" />
     <Compile Include="Core\XFiles.cs" />
     <Compile Include="UI\XLogBox.cs" />

@@ -79,7 +79,8 @@ P06Extended/
   Helpers.cs                  Reflection wrappers, XInput (Rewired) button names
   Extensions.cs               Reflection extension methods (Get, Set, InvokeFunc...)
   Core/
-    XDebug.cs                 Settings, cheats, speed multipliers, debug hotkeys and overlay
+    XDebug*.cs                The mod's main manager, one partial class split by topic:
+                              Settings, Hotkeys, Cheats, SpeedMultiplier, DebugTools...
     XFiles.cs                 Loads the data files in Plugins\P06X and checks the game version
     XSingleton.cs             Lazy singleton base: finds or creates the manager object
     XValue.cs                 A setting value that runs a callback when it changes
