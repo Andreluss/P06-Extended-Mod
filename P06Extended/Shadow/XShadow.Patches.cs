@@ -22,6 +22,10 @@
         // -------------- Clean up references when being destroyed (Unity Message) --------------
         public void OnDestroy()
         {
+            // Switching to the same character creates the new component before the old one
+            // is destroyed, so only clear the references if they still point to this one.
+            if (XI != this) return;
+
             XI = null;
             I = null;
             Debug.Log("XShadow detached");
