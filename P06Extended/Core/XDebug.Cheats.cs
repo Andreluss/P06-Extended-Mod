@@ -102,7 +102,7 @@ namespace P06X
                 instance.Set("GemSelector", 8);
                 instance.Set("ActiveGem", SonicNew.Gem.Rainbow);
                 instance.Get<UI>("HUD").UpdateGemPanel(gameData);
-                XDebug.Comment("[fix]?");
+                // TODO: check this
                 for (int j = 0; j < gameData.ObtainedGems.Count - 1; j++)
                 {
                     instance.Get<UI>("HUD").GemSlots[j].GetComponent<Image>().sprite = instance.Get<UI>("HUD").GemImages[j + 1];
@@ -139,7 +139,6 @@ namespace P06X
 
             public static void GetSigil()
             {
-                XDebug.Comment("gameData.SetFlag(Game.LotusOfResilience); ???");
                 Silver instance = XDebug.Finder<Silver>.Instance;
                 if (instance == null)
                 {

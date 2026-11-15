@@ -75,7 +75,7 @@ namespace P06X
                 this.Log("Infinite immunity <color=#ee0000>disabled</color>", 1.5f, 18f);
                 if (XDebug.Finder<PlayerBase>.Instance)
                 {
-                    XDebug.Comment("If there was a immune player then disable its immunity");
+                    // If there was a immune player then disable its immunity
                     XDebug.Finder<PlayerBase>.Instance.Set("ImmunityTime", Time.time);
                 }
             }, false);
@@ -110,8 +110,7 @@ namespace P06X
                         {
                             int[] agl = XDebug.Finder<UI>.Instance.Get<int[]>("ActiveGemLevel");
                             this.MaxedOutGems_Data.CopyTo(agl, 0);
-                            XDebug.Comment("[investigate] ^^^^^^^^ ");
-                            XDebug.Comment("XDebug.Finder<UI>.Instance.ActiveGemLevel = MaxedOutGems_Data.Clone() as int[];");
+                            // TODO: check whether the copy above is needed
                         }
                         else
                         {
@@ -133,7 +132,7 @@ namespace P06X
                     }
                     if (!XDebug.Cfg.Cheats.MaxedOutGems)
                     {
-                        XDebug.Comment("make a copy");
+                        // make a copy
                         this.MaxedOutGems_Data = XDebug.Finder<UI>.Instance.Get<int[]>("ActiveGemLevel").Clone() as int[];
                     }
                     for (int k = 0; k < 9; k++)
@@ -353,7 +352,7 @@ namespace P06X
                 list.Add(new ValueTuple<string, object>("[is_collapsed]" + xuisection.gameObject.name, xuisection.IsCollapsed));
                 foreach (XUIItem xuiitem in xuisection.Items)
                 {
-                    XDebug.Comment("xD i know it's bad design, but i didn't want to change xui classes cause they decompile really badly");
+                    // Menu items are told apart by type here; the XUI classes were left as they were
                     XUIToggleButton xuitoggleButton;
                     XUIFloatAdjuster xuifloatAdjuster;
                     XUIStringInput xuistringInput;

@@ -31,7 +31,7 @@ namespace P06X
                     if (Input.GetKeyDown(KeyCode.F1))
                     {
                         XDebug.Cheats.Rings += 50;
-                        XDebug.Comment("if was just pressed then wait a little more");
+                        // if was just pressed then wait a little more
                         this._ringsPrevClick = Time.time + 0.75f;
                         this.Log("50 rings <color=#00ee00>added!</color>", 0.7f, 16f);
                     }
@@ -85,12 +85,12 @@ namespace P06X
             }
             else
             {
-                XDebug.Comment("================== Ultra FPS (experimental) ==================");
+                // Ultra FPS (experimental)
                 if (Input.GetKeyDown(KeyCode.F1))
                 {
                     this.UltraSmoothFPS.Value = !this.UltraSmoothFPS.Value;
                 }
-                XDebug.Comment("================== Speed Override ==================");
+                // Speed Override
                 if (Input.GetKeyDown(KeyCode.F2))
                 {
                     this.EverySpeedMultiplier.Value -= 0.025f;
@@ -99,7 +99,7 @@ namespace P06X
                 {
                     this.EverySpeedMultiplier.Value += 0.05f;
                 }
-                XDebug.Comment("================== Custom BGM ==================");
+                // Custom BGM
                 if (Input.GetKeyDown(KeyCode.F11))
                 {
                     this.PlayCustomMusic.Value = false;
@@ -108,7 +108,7 @@ namespace P06X
                 {
                     this.PlayCustomMusic.Value = true;
                 }
-                XDebug.Comment("================== Info ==================");
+                // Info
                 if (Input.GetKeyDown(KeyCode.F6))
                 {
                     this.Log(string.Format("tgt: {0}FPS, fdt: {1}s", Application.targetFrameRate, Time.fixedDeltaTime.ToString("0.0000")), 1.5f, 18f);
@@ -124,10 +124,9 @@ namespace P06X
             }
             if (Input.GetKeyDown(KeyCode.F))
             {
-                XDebug.Comment("whatever");
                 this.LogExtra("sgflkdsjf dfk sjdlkfj sdf fd sdjlkjlkjl kjsdf kjlk jwlekjr", 1.5f, 0f);
             }
-            XDebug.Comment("Load/Save Settings");
+            // Load/Save Settings
             if (Input.GetKeyDown(KeyCode.KeypadPlus))
             {
                 XDebug.IMMEDIATE_SPINDASH_CLAMP = !XDebug.IMMEDIATE_SPINDASH_CLAMP;
@@ -141,7 +140,7 @@ namespace P06X
                     this.Log("cause on deafult spindash spd is clamped to 2 * MaxSpeed...", 2.5f, 14f);
                 }, 4.75f);
             }
-            XDebug.Comment("================== Char Switch ==================");
+            // Char Switch
             if (Singleton<RInput>.Instance.Get<Rewired.Player>("P").GetButton("Left Trigger"))
             {
                 bool flag = false;
@@ -226,7 +225,7 @@ namespace P06X
             {
                 this.XSwitchTo("blaze", 8, XDebug.Finder<PlayerBase>.Instance);
             }
-            XDebug.Comment("================== DEBUG MODE ==================");
+            // DEBUG MODE
             if (XDebug.DBG)
             {
                 if (XDebug.COMMENT && Input.GetKeyDown(KeyCode.Keypad5))
@@ -236,7 +235,7 @@ namespace P06X
                 }
                 if (XDebug.COMMENT)
                 {
-                    XDebug.Comment("this was controlling the position of the logbox");
+                    // Disabled: moves the log box with the keypad
                     Vector3 vector = Vector3.zero;
                     if (Input.GetKey(KeyCode.Keypad4))
                     {
@@ -280,7 +279,7 @@ namespace P06X
                     string text2 = "all01_v12_bz";
                     this.MessageLog(text, text2, 4f);
                 }
-                XDebug.Comment("Life hack");
+                // Set lives to 993
                 if (Input.GetKeyDown(KeyCode.Alpha9))
                 {
                     Singleton<GameData>.Instance.Sonic.Lives = 993;

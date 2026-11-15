@@ -105,7 +105,7 @@ namespace P06X
 
             public static void UpdateLUA(bool recalc_lua)
             {
-                XDebug.Comment("[pending]");
+                // TODO: unfinished
                 Assembly ass = Assembly.GetAssembly(typeof(SonicNew));
                 foreach (var kv in OriginalSpeedLUAs)
                 {

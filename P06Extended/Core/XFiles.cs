@@ -68,7 +68,6 @@ namespace P06X
             if (num != XFiles.VersionHash && XSingleton<XDebug>.Instance.Other_CheckP06Version.Value)
             {
                 XSingleton<XDebug>.Instance.Log("P-06 eXtended " + XDebug.P06X_VERSION + " <color=#ee0000>version error</color>(most likely)\n This mod release isn't comp. with your P-06 ver.", 100f, 12.5f);
-                XDebug.Comment("\n the game <color=#ee0000>may crash</color>");
                 File.WriteAllLines(text, new string[]
                 {
                 "0",
@@ -82,7 +81,7 @@ namespace P06X
                 });
                 return false;
             }
-            XDebug.Comment("Always CheckModFiles()");
+            // Always CheckModFiles()
             string text2 = null;
             try
             {
@@ -105,12 +104,12 @@ namespace P06X
                     break;
                 }
             }
-            XDebug.Comment("1 -> 1");
+            // Already installed and every required file is present
             if (text2 == "1" && text3 == null)
             {
                 XSingleton<XDebug>.Instance.Log("P-06<color=#00ee00>X</color>" + XDebug.P06X_VERSION + " Plugin by 4ndrelus", 3f, 13.8f);
             }
-            XDebug.Comment("0 -> 1");
+            // First run with every required file present: mark as installed
             if (text2 == "0" && text3 == null)
             {
                 File.WriteAllLines(text, new string[]
@@ -127,7 +126,7 @@ namespace P06X
                 XSingleton<XDebug>.Instance.Log("P-06 eXtended " + XDebug.P06X_VERSION + " <color=#00ee00>installed correctly</color>", 60f, 14f);
                 XSingleton<XDebug>.Instance.LogExtra("Thanks for using the mod!\n\n1) Press F12 to open the Mod Menu\n\n2) Have fun :D", 60f, 14f);
             }
-            XDebug.Comment("0/1 -> 0");
+            // A required file is missing: mark as not installed
             if (text3 != null)
             {
                 File.WriteAllLines(text, new string[]
@@ -212,7 +211,7 @@ namespace P06X
 
         public IEnumerator LoadMp3(Action<AudioClip> action, string filename)
         {
-            XDebug.Comment("THIS IS BROKEN currently");
+            // NOTE: currently broken
             string text = string.Format("file://{0}", XCommon.ModFilesPath + filename);
             WWW www = new WWW(text);
             yield return www;

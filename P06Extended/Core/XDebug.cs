@@ -28,7 +28,7 @@ namespace P06X
             SceneManager.sceneLoaded += this.OnSceneLoaded;
             UnityEngine.Object.DontDestroyOnLoad(this);
             Application.runInBackground = true;
-            XDebug.Comment("only here initializing XValues won't crash");
+            // only here initializing XValues won't crash
             CustomSpeedMultiplier.InitializeOriginalLUA();
             this.InitializeXValues();
         }
@@ -72,7 +72,7 @@ namespace P06X
             }
             else
             {
-                XDebug.Comment("to prevent random output from initalized xvalues");
+                // Hide the log box so initializing the XValues does not print anything
                 this.Box_EndTime = Time.time;
             }
             Singleton<XModMenu>.Instance.Menu.OnClose += delegate
@@ -96,7 +96,7 @@ namespace P06X
             {
                 this.HandleInput();
             }
-            XDebug.Comment("================== Time slowdown ==================");
+            // Time slowdown
             if (Input.GetKey(KeyCode.RightControl))
             {
                 if (Input.GetKeyDown(KeyCode.RightControl))
@@ -111,7 +111,7 @@ namespace P06X
                 Time.timeScale = 1f;
                 Time.fixedDeltaTime = this.RealFixedDeltaTime;
             }
-            XDebug.Comment("================== buggy speedup ==================");
+            // Speed-up (buggy)
             if (Input.GetKey(KeyCode.Keypad0) || Input.GetKey(KeyCode.Delete) || Input.GetKey(KeyCode.Insert) || Input.GetButton("Right Stick Button"))
             {
                 Time.timeScale = 8f;
@@ -124,7 +124,7 @@ namespace P06X
             {
                 Time.timeScale = 0f;
             }
-            XDebug.Comment("================== Log Box handling ==================");
+            // Log Box handling
             if (this.Box_GameObject != null && this.Box_GameObject.activeSelf && Time.time > this.Box_EndTime)
             {
                 this.Box_GameObject.SetActive(false);
@@ -186,7 +186,6 @@ namespace P06X
             this.SpeedMultiplier = 1f;
             this.Box_EndTime = 9999f;
             this.SRs = new List<Renderer>();
-            XDebug.Comment("OLD COLORS: this.LA_Color = new Color(0f, 5f, 40f, 0.4f);this.SC_Color = new Color(0f, 23f, 255f, 0.3f);");
             this.LRs = new List<LineRenderer>();
         }
 
@@ -385,7 +384,7 @@ namespace P06X
                 Singleton<GameData>.Instance.Sonic.Lives = 993;
             }
             Time.timeScale = 1f;
-            XDebug.Comment("Recalculate some scene-dependent variables...");
+            // Recalculate some scene-dependent variables...
             this._sonicNew = null;
             this._sonicFast = null;
             this._HUD = null;
@@ -400,7 +399,7 @@ namespace P06X
                 Time.fixedDeltaTime = 0.016666668f;
                 Application.targetFrameRate = 60;
             }
-            XDebug.Comment("check mod files integrity");
+            // check mod files integrity
             // no longer need to check the p06 version, since we have a plugin mod
             if (scene.name == "MainMenu")
             {
@@ -408,7 +407,7 @@ namespace P06X
             }
             if (scene.name == "MainMenu")
                 XSingleton<XDebug>.Instance.Log("P-06<color=#00ee00>X</color>" + XDebug.P06X_VERSION + " Plugin by 4ndrelus", 20f, 13.8f);
-            XDebug.Comment("custom music check and update");
+            // custom music check and update
             if (this.PlayCustomMusic.Value)
             {
                 this.StartCustomMusic();
@@ -437,8 +436,6 @@ namespace P06X
                 this.Box_GameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 1f);
                 this.Box_Script = this.Box_GameObject.GetComponent<MessageBox>();
                 this.Box_Script.Set("Duration", 9999999f);
-                XDebug.Comment("this.Box_Script.transform.SetParent(UnityEngine.Object.FindObjectOfType<Canvas>().transform, false);");
-                XDebug.Comment("this.Box_Script.transform.SetParent(Singleton<XModMenu>.Instance.Canvas.transform, false);");
                 this.Box_Script.transform.SetParent(this.XCanvas.transform, false);
                 Vector2 vector = new Vector2(350f, 45f);
                 Vector2 vector2 = new Vector2(325f, 30f);

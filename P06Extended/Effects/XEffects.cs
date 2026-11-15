@@ -50,7 +50,6 @@ namespace P06X
                 }
                 catch (Exception)
                 {
-                    XDebug.Comment("[ERROR]");
                     return;
                 }
                 ParticleSystem particleSystem = this.DodgeFX.AddComponent<ParticleSystem>();
@@ -62,7 +61,6 @@ namespace P06X
                 ParticleSystem.EmissionModule emission = particleSystem.emission;
                 emission.enabled = true;
                 emission.rateOverTime = XEffects.DodgeParams.Rate;
-                XDebug.Comment("emission.SetBurst(0, new ParticleSystem.Burst(0f, new ParticleSystem.MinMaxCurve(200f), 1, 2f))");
                 ParticleSystem.ShapeModule shape = particleSystem.shape;
                 shape.enabled = true;
                 shape.shapeType = ParticleSystemShapeType.SkinnedMeshRenderer;
@@ -76,8 +74,6 @@ namespace P06X
                 velocityOverLifetime.orbitalZ = 0.3f;
                 ParticleSystem.ColorOverLifetimeModule colorOverLifetime = particleSystem.colorOverLifetime;
                 colorOverLifetime.enabled = true;
-                XDebug.Comment("//Colors BACKUP:\r\n\t\t\t\tColor startColor = new Color(0.34117648f, 0.2509804f, 0.9607843f) * this.GLOW;\r\n\t\t\t\tColor endColor = new Color(0.64705884f, 0.11764706f, 0.7921569f) * this.GLOW;\r\n\t\t\t");
-                XDebug.Comment("new Color(0f, 0.09411765f, 0.9607843f) * this.GLOW; new Color(0.64705884f, 0.11764706f, 1f) * this.GLOW;");
                 Color color = XEffects.DodgeParams.Color * XEffects.DodgeParams.Glow;
                 if ((XDebug.Finder<SonicNew>.Instance && XDebug.Finder<SonicNew>.Instance.Get<bool>("IsSuper")) || (XDebug.Finder<SonicFast>.Instance && XDebug.Finder<SonicFast>.Instance.Get<bool>("IsSuper")))
                 {
@@ -102,7 +98,7 @@ namespace P06X
                 trails.enabled = true;
                 trails.minVertexDistance = 0.05f;
                 trails.worldSpace = true;
-                XDebug.Comment("Renderer");
+                // Renderer
                 ParticleSystemRenderer component = this.DodgeFX.GetComponent<ParticleSystemRenderer>();
                 component.renderMode = ParticleSystemRenderMode.None;
                 component.trailMaterial = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
@@ -155,7 +151,6 @@ namespace P06X
             {
                 GameObject gameObject = Resources.Load<GameObject>("defaultprefabs/effect/player/sonic/LightAttackFX");
                 this.StompFXPrefab = UnityEngine.Object.Instantiate<GameObject>(gameObject, Vector3.zero, Quaternion.identity);
-                XDebug.Comment("!!!!!!!!!!!!!!!!!!!!");
                 this.StompFXPrefab.GetComponent<AudioSource>().clip = (XSingleton<XDebug>.Instance.SonicNew ? XSingleton<XDebug>.Instance.SonicNew.JumpDashKickback : null);
                 this.StompFXPrefab.GetComponent<MonoBehaviour>().enabled = false;
                 UnityEngine.Object.Destroy(this.StompFXPrefab.GetComponent<MonoBehaviour>());
@@ -208,21 +203,18 @@ namespace P06X
             {
                 this.StompTornadoFXPrefab = new GameObject("X_StompTornadoFX");
                 ParticleSystem particleSystem = this.StompTornadoFXPrefab.AddComponent<ParticleSystem>();
-                XDebug.Comment("========= main =========");
+                // Main
                 ParticleSystem.MainModule main = particleSystem.main;
                 main.loop = false;
                 main.duration = 1f;
                 main.startLifetime = new ParticleSystem.MinMaxCurve(0.3f, 1f);
                 main.startSpeed = new ParticleSystem.MinMaxCurve(-0.25f, 2.5f);
                 main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
-                XDebug.Comment("new Color(0.1529412f, 0.2f, 1f, 1f) * 3.5f;");
-                XDebug.Comment("new Color(0.4386792f, 0.9042454f, 1f, 1f);");
-                XDebug.Comment("this makes no effect actually: ");
+                // The next line seems to have no effect
                 main.startColor = new Color(0f, 23f, 255f, 1f) * XEffects.StompTornadoParams.Glow / 2f;
-                XDebug.Comment("I guess.....");
                 main.gravityModifier = -0.1f;
                 main.gravityModifier = 0f;
-                XDebug.Comment("========= emiss ========");
+                // Emission
                 ParticleSystem.EmissionModule emission = particleSystem.emission;
                 emission.enabled = true;
                 emission.rateOverTime = 0f;
@@ -230,7 +222,7 @@ namespace P06X
                 {
                 new ParticleSystem.Burst(0f, 40)
                 });
-                XDebug.Comment("========= shape ========");
+                // Shape
                 ParticleSystem.ShapeModule shape = particleSystem.shape;
                 shape.enabled = true;
                 shape.shapeType = ParticleSystemShapeType.Cone;
@@ -238,7 +230,7 @@ namespace P06X
                 shape.angle = 15f;
                 shape.radius = 2.5f;
                 shape.radiusThickness = 0.9f;
-                XDebug.Comment("========= vel o/lt ========");
+                // Velocity over lifetime
                 ParticleSystem.VelocityOverLifetimeModule velocityOverLifetime = particleSystem.velocityOverLifetime;
                 velocityOverLifetime.enabled = true;
                 velocityOverLifetime.orbitalX = 0.1f;
@@ -246,7 +238,7 @@ namespace P06X
                 velocityOverLifetime.orbitalZ = 0.1f;
                 velocityOverLifetime.radial = 0.1f;
                 velocityOverLifetime.speedModifier = 2f;
-                XDebug.Comment("======== size o/lt ========");
+                // Size over lifetime
                 ParticleSystem.SizeOverLifetimeModule sizeOverLifetime = particleSystem.sizeOverLifetime;
                 sizeOverLifetime.enabled = true;
                 AnimationCurve animationCurve = new AnimationCurve();
@@ -254,11 +246,11 @@ namespace P06X
                 animationCurve.AddKey(0.5f, 0.8f);
                 animationCurve.AddKey(1f, 0f);
                 sizeOverLifetime.size = new ParticleSystem.MinMaxCurve(1f, animationCurve);
-                XDebug.Comment("========= trails =========");
+                // Trails
                 ParticleSystem.TrailModule trails = particleSystem.trails;
                 trails.enabled = true;
                 trails.lifetime = 0.1f;
-                XDebug.Comment("========= rend =========");
+                // Renderer
                 ParticleSystemRenderer component = this.StompTornadoFXPrefab.GetComponent<ParticleSystemRenderer>();
                 Material material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
                 material.mainTexture = XFiles.LoadPNG(XCommon.ModFilesPath + "Particle.png");
@@ -281,7 +273,7 @@ namespace P06X
             main2.loop = false;
             main2.startColor = XEffects.StompTornadoParams.Color * XEffects.StompTornadoParams.Glow;
             component2.Play();
-            XDebug.Comment("shouldn't we destroy it later????");
+            // TODO: should this be destroyed later?
         }
 
         public void CreateStompCrashFX(RaycastHit whereHit)
@@ -378,7 +370,7 @@ namespace P06X
             {
                 this.StompTornadoShadowFXPrefab = new GameObject("X_StompTornadoFX");
                 ParticleSystem particleSystem = this.StompTornadoShadowFXPrefab.AddComponent<ParticleSystem>();
-                XDebug.Comment("========= main =========");
+                // Main
                 ParticleSystem.MainModule main = particleSystem.main;
                 main.loop = false;
                 main.duration = 1f;
@@ -387,10 +379,9 @@ namespace P06X
                 main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.15f);
                 main.gravityModifier = -0.1f;
                 main.gravityModifier = 0f;
-                XDebug.Comment("this makes no effect actually: ");
+                // The next line seems to have no effect
                 main.startColor = new Color(255f, 0f, 0f, 1f) * XEffects.StompTornadoParams.Glow / 2f;
-                XDebug.Comment("I guess.....");
-                XDebug.Comment("========= emiss ========");
+                // Emission
                 ParticleSystem.EmissionModule emission = particleSystem.emission;
                 emission.enabled = true;
                 emission.rateOverTime = 0f;
@@ -398,7 +389,7 @@ namespace P06X
                 {
                 new ParticleSystem.Burst(0f, 40)
                 });
-                XDebug.Comment("========= shape ========");
+                // Shape
                 ParticleSystem.ShapeModule shape = particleSystem.shape;
                 shape.enabled = true;
                 shape.shapeType = ParticleSystemShapeType.Cone;
@@ -406,7 +397,7 @@ namespace P06X
                 shape.angle = 15f;
                 shape.radius = 2.5f;
                 shape.radiusThickness = 0.9f;
-                XDebug.Comment("========= vel o/lt ========");
+                // Velocity over lifetime
                 ParticleSystem.VelocityOverLifetimeModule velocityOverLifetime = particleSystem.velocityOverLifetime;
                 velocityOverLifetime.enabled = true;
                 velocityOverLifetime.orbitalX = 0.1f;
@@ -414,7 +405,7 @@ namespace P06X
                 velocityOverLifetime.orbitalZ = 0.1f;
                 velocityOverLifetime.radial = 0.1f;
                 velocityOverLifetime.speedModifier = 2f;
-                XDebug.Comment("======== size o/lt ========");
+                // Size over lifetime
                 ParticleSystem.SizeOverLifetimeModule sizeOverLifetime = particleSystem.sizeOverLifetime;
                 sizeOverLifetime.enabled = true;
                 AnimationCurve animationCurve = new AnimationCurve();
@@ -422,11 +413,11 @@ namespace P06X
                 animationCurve.AddKey(0.5f, 0.8f);
                 animationCurve.AddKey(1f, 0f);
                 sizeOverLifetime.size = new ParticleSystem.MinMaxCurve(1f, animationCurve);
-                XDebug.Comment("========= trails =========");
+                // Trails
                 ParticleSystem.TrailModule trails = particleSystem.trails;
                 trails.enabled = true;
                 trails.lifetime = 0.1f;
-                XDebug.Comment("========= rend =========");
+                // Renderer
                 ParticleSystemRenderer component = this.StompTornadoShadowFXPrefab.GetComponent<ParticleSystemRenderer>();
                 Material material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
                 material.mainTexture = XFiles.LoadPNG(XCommon.ModFilesPath + "Particle.png");
@@ -452,7 +443,7 @@ namespace P06X
             main2.startColor = this.DGBCOL2;
             main2.startColor = new Color(2.75f, 0f, 0f, 0.3f);
             component2.Play();
-            XDebug.Comment("shouldn't we destroy it later????");
+            // TODO: should this be destroyed later?
         }
 
         public void CreateStompShadowFX()
@@ -461,7 +452,6 @@ namespace P06X
             {
                 GameObject gameObject = Resources.Load<GameObject>("defaultprefabs/effect/player/sonic/LightAttackFX");
                 this.StompShadowFXPrefab = UnityEngine.Object.Instantiate<GameObject>(gameObject, Vector3.zero, Quaternion.identity);
-                XDebug.Comment("!!!!!!!!!!!!!!!!!!!!");
                 this.StompShadowFXPrefab.GetComponent<AudioSource>().clip = (XSingleton<XDebug>.Instance.SonicNew ? XSingleton<XDebug>.Instance.SonicNew.JumpDashKickback : null);
                 this.StompShadowFXPrefab.GetComponent<MonoBehaviour>().enabled = false;
                 UnityEngine.Object.Destroy(this.StompShadowFXPrefab.GetComponent<MonoBehaviour>());

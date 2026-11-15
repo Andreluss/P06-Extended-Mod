@@ -71,7 +71,6 @@ namespace P06X
             component4.enabled = false;
             component4.transform.GetChild(0).GetChild(0).GetComponent<Image>()
                 .color = Color.white;
-            XDebug.Comment("new Color(0.4283019f, 0.7813739f, 1f, 0.5f);");
             XSingleton<XDebug>.Instance.XCanvas.gameObject.AddComponent<XUIMenu.XMenuController>().Init(this, toggleKey);
         }
 

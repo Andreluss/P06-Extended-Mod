@@ -62,12 +62,8 @@ namespace P06X
                     Vector3 vector = Vector3.ProjectOnPlane(I.Camera.transform.forward * (flag ? -1 : 1), I.RcH["RaycastHit"].normal);
                     I.I.transform.forward = vector;
 
-                    XDebug.Comment("Adjust forward rotation to camera automatically");
-                    XDebug.Comment("This works only in Crisis City E --> to prevent sudden flying off the road");
-                    if (Vector3.Angle(vector, Vector3.ProjectOnPlane(base.transform.forward, I.RcH["RaycastHit"].normal)) > 5f)
-                    {
-                        XDebug.Comment(string.Format("<color=#ee6600>Adjusted direction by {0} deg</color>", Vector3.Angle(vector, Vector3.ProjectOnPlane(base.transform.forward, I.RcH["RaycastHit"].normal))));
-                    }
+                    // Adjust forward rotation to camera automatically
+                    // Only needed in Crisis City E, to stop the player flying off the road
                 }
                 else if (VDodgeState.CscFixMode == 2)
                 {
@@ -147,7 +143,6 @@ namespace P06X
             I.Camera.transform.position += VDodge.SideCurVel * Time.deltaTime;
             if (Time.time >= VDodge.EndTime)
             {
-                XDebug.Comment("|| Vector3.Dot(base.transform.right * (float)this.X_DodgeDir, this._Rigidbody.velocity) < 0.1f)");
                 if (I.I.IsGrounded())
                 {
                     I.I.StateMachine.ChangeState(I.I.GetState("StateGround"));
