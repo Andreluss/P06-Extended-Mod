@@ -15,7 +15,7 @@
             {
                 XI = __instance.gameObject.AddComponent<XSonicFast>();
                 I = new ISonicFast(__instance);
-                Debug.Log("Added XSonicFast");
+                Debug.Log("XSonicFast attached");
             }
         }
 
@@ -24,7 +24,7 @@
         {
             XI = null;
             I = null;
-            Debug.Log("Removed reference to XSonicFast because SonicFast is being destoyed!");
+            Debug.Log("XSonicFast detached");
         }
 
         [HarmonyPatch(typeof(SonicFast), "Update")]

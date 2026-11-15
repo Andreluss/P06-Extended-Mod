@@ -10,7 +10,7 @@ namespace P06X
             base.OnLateInitializeMelon();
             Debug.Log("P-06 Extended (plugin) has been loaded!");
             // Initialize the X classes:
-            XDebug.Instance.Log("hello", 20f);
+            XDebug.Instance.Log("P-06X " + XCommon.Version + " loaded", 3f);
             Debug.Log(XFiles.Instance);
         }
     }

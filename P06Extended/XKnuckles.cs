@@ -51,7 +51,7 @@ namespace P06X
             {
                 XI = __instance.gameObject.AddComponent<XKnuckles>();
                 I = new IKnuckles(__instance);
-                Debug.Log("Added XKnuckles to Knuckles object!");
+                Debug.Log("XKnuckles attached");
             }
         }
 
@@ -60,7 +60,7 @@ namespace P06X
         {
             XI = null;
             I = null;
-            Debug.Log("Removed reference to Xknuckles because Knuckles is being destoyed!");
+            Debug.Log("XKnuckles detached");
         }
 
         // Patch the Knuckles' private void CanClimb(bool CannotAttach = false) method with prefix

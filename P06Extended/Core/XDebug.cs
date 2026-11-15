@@ -321,10 +321,6 @@ namespace P06X
 
         public void Dump(object obj)
         {
-            if (Input.GetKeyDown(KeyCode.LeftAlt))
-            {
-                Debug.Log("default obj");
-            }
         }
 
         public SonicFast SonicFast

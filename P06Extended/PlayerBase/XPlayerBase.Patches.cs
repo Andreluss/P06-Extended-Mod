@@ -15,7 +15,7 @@
             {
                 XI = __instance.gameObject.AddComponent<XPlayerBase>();
                 I = new IPlayerBase(__instance);
-                Debug.Log("Added XPlayerBase to PlayerBase object!");
+                Debug.Log("XPlayerBase attached");
             }
         }
 

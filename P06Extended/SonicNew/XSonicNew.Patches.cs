@@ -15,7 +15,7 @@
             {
                 XInstance = __instance.gameObject.AddComponent<XSonicNew>();
                 I = new ISonicNew(__instance);
-                Debug.Log("Added XSonicNew to SonicNew. Now you can use eXtended States!");
+                Debug.Log("XSonicNew attached");
             }
         }
 
@@ -24,7 +24,7 @@
         {
             XInstance = null;
             I = null;
-            Debug.Log("Removed reference to XSonicNew because SonicNew is being destoyed!");
+            Debug.Log("XSonicNew detached");
         }
 
         [HarmonyPatch(typeof(SonicNew), "StateAfterHoming")]

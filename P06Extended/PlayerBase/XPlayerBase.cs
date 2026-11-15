@@ -10,11 +10,6 @@
     {
         public static XPlayerBase XI;
 
-        public XPlayerBase()
-        {
-            Debug.Log("XPlayerBase constructor calleddddd");
-        }
-
         public class IPlayerBase : ReflectionAccessor<PlayerBase>
         {
             public PlayerCamera Camera;
