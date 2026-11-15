@@ -98,8 +98,6 @@ namespace P06X
             }
             II._Rigidbody.velocity = II.Get<Vector3>("AirMotionVelocity");
             II.DoWallNormal();
-
-            Debug.Log("StateStomp");
         }
 
         public void StateStompEnd()
