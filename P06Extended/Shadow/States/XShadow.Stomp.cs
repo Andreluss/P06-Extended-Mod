@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static MelonLoader.MelonLogger;
 
-namespace P06X 
+namespace P06X
 {
     public partial class XShadow
     {
@@ -105,7 +105,7 @@ namespace P06X
             }
             else
             {
-                II.AttackSphere_Dir(II.transform.position,  
+                II.AttackSphere_Dir(II.transform.position,
                     ReflectionExtensions.GetLuaStruct("Sonic_New_Lua", "c_boundattack_collision")
                     .Get<float>("radius") * 1.25f, 25f, 1);
                 Vector3 amv = I.Vec["AirMotionVelocity"];
@@ -114,8 +114,6 @@ namespace P06X
             }
             II._Rigidbody.velocity = I.Vec["AirMotionVelocity"];
             II.DoWallNormal();
-
-            Debug.Log("StateStomp");
         }
 
         public void StateStompEnd()

@@ -13,14 +13,8 @@ namespace P06X
     {
         private void StateGetUpXStart()
         {
-            //I.Set("PlayerState", SonicNew.State.Ground);
-            //I.Set("GetUpTime", Time.time);
-
             I.Stt["PlayerState"] = SonicNew.State.Ground;
             I.Flt["GetUpTime"] = Time.time;
-
-            //SN.W<SonicNew.State>()["PlayerState"] = SonicNew.State.Ground;
-            //SN.W<float>()["GetUpTime"] = Time.time;
         }
 
         private void StateGetUpX()

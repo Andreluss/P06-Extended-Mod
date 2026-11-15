@@ -32,19 +32,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\MelonLoader\0Harmony.dll</HintPath>
+      <HintPath>$(P06GameDir)MelonLoader\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(P06ManagedDir)Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\MelonLoader\MelonLoader.dll</HintPath>
+      <HintPath>$(P06GameDir)MelonLoader\MelonLoader.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Core">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\Rewired_Core.dll</HintPath>
+      <HintPath>$(P06ManagedDir)Rewired_Core.dll</HintPath>
     </Reference>
     <Reference Include="Rewired_Windows">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\Rewired_Windows.dll</HintPath>
+      <HintPath>$(P06ManagedDir)Rewired_Windows.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,62 +56,89 @@
     <Reference Include="System.Xml" />
     <Reference Include="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(P06ManagedDir)Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>$(P06ManagedDir)UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(P06ManagedDir)UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.InputLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.ParticleSystemModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UIModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestAudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UnityWebRequestModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestTextureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+      <HintPath>$(P06ManagedDir)UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls.cs" />
+    <Compile Include="Legacy\Core\XDebug.cs" />
+    <Compile Include="Legacy\Core\XDebug.Settings.cs" />
+    <Compile Include="Legacy\Core\XDebug.Hotkeys.cs" />
+    <Compile Include="Legacy\Core\XDebug.Helpers.cs" />
+    <Compile Include="Legacy\Core\XDebug.Fields.cs" />
+    <Compile Include="Legacy\Core\XDebug.DebugTools.cs" />
+    <Compile Include="Legacy\Core\XDebug.SpeedMultiplier.cs" />
+    <Compile Include="Legacy\Core\XDebug.Cheats.cs" />
+    <Compile Include="Legacy\Core\XDebug.Cfg.cs" />
+    <Compile Include="Legacy\Effects\XEffects.cs" />
+    <Compile Include="Legacy\Core\XFiles.cs" />
+    <Compile Include="Legacy\UI\XLogBox.cs" />
+    <Compile Include="Legacy\UI\XModMenu.cs" />
+    <Compile Include="Legacy\Core\XSingleton.cs" />
+    <Compile Include="Legacy\UI\XUIConfig.cs" />
+    <Compile Include="Legacy\UI\XUIFloatAdjuster.cs" />
+    <Compile Include="Legacy\UI\XUIFunctionButton.cs" />
+    <Compile Include="Legacy\UI\XUIItem.cs" />
+    <Compile Include="Legacy\UI\XUIMenu.cs" />
+    <Compile Include="Legacy\UI\XUISection.cs" />
+    <Compile Include="Legacy\UI\XUIStringInput.cs" />
+    <Compile Include="Legacy\UI\XUIToggleButton.cs" />
+    <Compile Include="Legacy\Core\XUtility.cs" />
+    <Compile Include="Legacy\Core\XValue.cs" />
     <Compile Include="PlayerBase\States\XPlayerBase.WaterRun.Effects.cs" />
     <Compile Include="PlayerBase\States\XPlayerBase.WaterSlide.Patches.cs" />
     <Compile Include="PlayerBase\States\XPlayerBase.WaterSlide.State.cs" />
@@ -147,8 +174,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y "$(TargetPath)" "$(ProjectDir)..\..\Sonic the Hedgehog (P-06)\Plugins\"
-start /b "" "$(ProjectDir)..\..\Sonic the Hedgehog (P-06)\Sonic the Hedgehog.exe"</PostBuildEvent>
+    <PostBuildEvent>copy /y "$(TargetPath)" "$(P06GameDir)Plugins\"
+start /b "" "$(P06GameDir)Sonic the Hedgehog.exe"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>taskkill /f /im "Sonic the Hedgehog.exe" /t 2&gt;nul || set errorlevel=0</PreBuildEvent>

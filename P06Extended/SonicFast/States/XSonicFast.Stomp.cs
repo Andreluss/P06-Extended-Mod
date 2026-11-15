@@ -8,7 +8,7 @@ using UnityEngine;
 using static MelonLoader.MelonLogger;
 using static P06X.XSonicNew;
 
-namespace P06X 
+namespace P06X
 {
     public partial class XSonicFast
     {
@@ -30,7 +30,7 @@ namespace P06X
             I.Vec["AirMotionVelocity"] = airMotionVelocity;
             II._Rigidbody.velocity = airMotionVelocity;
 
-            II.Get<AudioSource>("Audio").PlayOneShot(II.BoundStart, 
+            II.Get<AudioSource>("Audio").PlayOneShot(II.BoundStart,
                 II.Get<AudioSource>("Audio").volume * 0.5f);
 
             XSingleton<XEffects>.Instance.CreateStompFX();

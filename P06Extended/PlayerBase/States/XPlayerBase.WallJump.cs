@@ -40,7 +40,7 @@
             WallJump.Normal = I.RcH["FrontalHit"].normal;
             I.I.transform.up = Vector3.up;
             I.I.transform.forward = I.RcH["FrontalHit"].normal;
-            
+
             if (I.I.GetPrefab("sonic_new") || I.I.GetPrefab("shadow") || I.I.GetPrefab("sonic_fast") || I.I.GetPrefab("princess"))
             {
                 I.I.PlayAnimation("Chain Jump Wall Wait", "On Chain Jump Wall Wait");
@@ -68,7 +68,6 @@
 
             I.I._Rigidbody.velocity = Vector3.zero;
             I.Boo["LockControls"] = true;
-            //I.I.Audio.PlayOneShot(/*"WallLand"*/, I.I.Audio.volume * 0.4f);
         }
         public void StateWallJump()
         {

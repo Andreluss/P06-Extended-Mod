@@ -15,7 +15,7 @@
             {
                 XI = __instance.gameObject.AddComponent<XShadow>();
                 I = new IShadow(__instance);
-                Debug.Log("Added XShadow.");
+                Debug.Log("XShadow attached");
             }
         }
 
@@ -24,7 +24,7 @@
         {
             XI = null;
             I = null;
-            Debug.Log("Removed reference to XShadow because Shadow is being destroyed!");
+            Debug.Log("XShadow detached");
         }
 
         [HarmonyPatch(typeof(Shadow), "Update")]

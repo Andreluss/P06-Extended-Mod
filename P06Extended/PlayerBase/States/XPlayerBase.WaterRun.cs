@@ -31,16 +31,16 @@
         public static bool CanWaterRun()
         {
             if (!CheckGameState()) return false;
+            if (!XDebug.Instance.Moveset_FreeWaterSliding.Value) return false;
             if (XI.WaterRunState.active) return false;
             if (I.I.IsGrounded()) return false;
-            //if (I.I.GetPrefab("snow_board")) return false;
 
             Vector3 vector = default(Vector3);
-            bool is_falling_and_fast_enough = I.I._Rigidbody.velocity.y < 0f && I.Flt["CurSpeed"] > WaterRun.MinActivationSpeed;
-            return is_falling_and_fast_enough && HasWaterBelow(WaterRun.YMaxWaterRaycastDist, ref vector);
+            bool isFallingFastEnough = I.I._Rigidbody.velocity.y < 0f && I.Flt["CurSpeed"] > WaterRun.MinActivationSpeed;
+            return isFallingFastEnough && HasWaterBelow(WaterRun.YMaxWaterRaycastDist, ref vector);
         }
 
-        private static void logAllColliders(RaycastHit[] hits)
+        private static void LogAllColliders(RaycastHit[] hits)
         {
             foreach (var hit in hits)
             {
@@ -75,7 +75,7 @@
                     break;
                 }
             }
-            if (flag) logAllColliders(array);
+            if (flag) LogAllColliders(array);
             return flag;
         }
 

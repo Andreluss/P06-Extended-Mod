@@ -12,9 +12,10 @@ namespace P06X
         public Vector3 RealRight()
         {
             Vector3 groundNormal = I.RcH["RaycastHit"].normal;
-            if (groundNormal == Vector3.zero) {
+            if (groundNormal == Vector3.zero)
+            {
                 return I.I.transform.right;
-            } 
+            }
             return Vector3.ProjectOnPlane(Vector3.Cross(groundNormal, I.I.transform.forward), groundNormal).normalized;
         }
 
@@ -33,14 +34,12 @@ namespace P06X
             {
                 direction = ((dot >= 0f) ? 1 : (-1));
                 buttonName = XInput.REWIRED_RIGHT_BUMPER;
-                // XSingleton<XDebug>.Instance.JustUsedLeftTrigger = true;
                 return true;
             }
             else if (XInput.Controls.GetButtonDown(XInput.REWIRED_LEFT_BUMPER))
             {
                 direction = ((dot >= 0f) ? (-1) : 1);
                 buttonName = XInput.REWIRED_LEFT_BUMPER;
-                // XSingleton<XDebug>.Instance.JustUsedLeftTrigger = true;
                 return true;
             }
             return false;

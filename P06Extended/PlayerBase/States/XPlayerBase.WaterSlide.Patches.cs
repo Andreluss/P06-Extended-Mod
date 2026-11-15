@@ -30,7 +30,8 @@
             public static bool Prefix(WaterSlider __instance, Collider collider)
             {
                 PlayerBase player = __instance.GetPlayer(collider);
-                if (!player || player.Get<bool>("IsDead") /*|| (!player.GetPrefab("sonic_new") && !player.GetPrefab("metal_sonic"))*/)
+                // The game only lets sonic_new and metal_sonic onto water sliders; this lets every character on.
+                if (!player || player.Get<bool>("IsDead"))
                 {
                     return false;
                 }
@@ -49,7 +50,6 @@
                     if (XI.WaterSlideState.active)
                     {
                         XI.WaterSlideState.WSpeed = Speed;
-                        // XI.WaterSlideState.FWSpeedTarget = Speed; todo remove
                     }
                     else
                     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static MelonLoader.MelonLogger;
 
-namespace P06X 
+namespace P06X
 {
     public partial class XSonicNew
     {
@@ -23,18 +23,16 @@ namespace P06X
             II.Set("PlayerState", SonicNew.State.BoundAttack);
 
             Vector3 airMotionVelocity = II._Rigidbody.velocity;
-            float lua_boundjump_jmp = ReflectionExtensions.GetLuaStruct("Sonic_New_Lua").Get<float>("c_boundjump_jmp");
-            airMotionVelocity.y = lua_boundjump_jmp * 1.5f;
+            float boundJumpSpeed = ReflectionExtensions.GetLuaStruct("Sonic_New_Lua").Get<float>("c_boundjump_jmp");
+            airMotionVelocity.y = boundJumpSpeed * 1.5f;
             II.Set("AirMotionVelocity", airMotionVelocity);
             II._Rigidbody.velocity = airMotionVelocity;
 
             II.Get<AudioSource>("Audio").PlayOneShot(II.SpinDashShoot,
                 II.Get<AudioSource>("Audio").volume * 0.5f);
-             XSingleton<XEffects>.Instance.CreateStompFX();
+            XSingleton<XEffects>.Instance.CreateStompFX();
 
             Stomp.Destroyed = false;
-            //II.Set("ImmunityTime", Time.time + 9999999f);
-            //II.Set("BlinkTimer", -9999999f);
 
             Debug.Log("StateStompStart");
         }
@@ -56,15 +54,15 @@ namespace P06X
             {
                 // audio (optional) todo
                 II.AttackSphere_Dir(II.transform.position, 1f * 2f, 30f, 1);
-                float exisX = XInput.Controls.GetAxis("Left Stick X");
-                float exisY = XInput.Controls.GetAxis("Left Stick Y");
-                if (exisY != 0f || exisX != 0f)
+                float axisX = XInput.Controls.GetAxis("Left Stick X");
+                float axisY = XInput.Controls.GetAxis("Left Stick Y");
+                if (axisY != 0f || axisX != 0f)
                 {
-                    float num = Mathf.Min(1f, Mathf.Abs(exisY) + Mathf.Abs(exisX));
+                    float num = Mathf.Min(1f, Mathf.Abs(axisY) + Mathf.Abs(axisX));
                     II.Set("CurSpeed", II.Get<float>("CurSpeed") * num * Stomp.SpeedMult);
 
                     II.StateMachine.ChangeState(II.GetState("StateSpinDash"));
-                     XSingleton<XEffects>.Instance.DestroyStompFX(true);
+                    XSingleton<XEffects>.Instance.DestroyStompFX(true);
                     Stomp.Destroyed = true;
                 }
                 else
@@ -100,18 +98,14 @@ namespace P06X
             }
             II._Rigidbody.velocity = II.Get<Vector3>("AirMotionVelocity");
             II.DoWallNormal();
-
-            Debug.Log("StateStomp");
         }
 
         public void StateStompEnd()
         {
             if (!Stomp.Destroyed)
             {
-                 XSingleton<XEffects>.Instance.DestroyStompFX(false);
+                XSingleton<XEffects>.Instance.DestroyStompFX(false);
             }
-            //II.Set("BlinkTimer", -4.5f);
-            //II.Set("ImmunityTime", Time.time + 0.33f);
 
             Debug.Log("StateStompEnd");
         }

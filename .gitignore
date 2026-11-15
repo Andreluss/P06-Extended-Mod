@@ -6,3 +6,6 @@
 /P06Extended/bin/
 /P06Extended/obj
 /P06Extended/.vs
+
+# Local game path (see Directory.Build.props.user.example)
+Directory.Build.props.user
