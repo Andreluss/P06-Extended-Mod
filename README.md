@@ -76,30 +76,35 @@ P06Extended/
   Main.cs                     MelonLoader entry point
   Properties/AssemblyInfo.cs  MelonInfo and MelonGame attributes
   XCommon.cs                  Version, data folder path, section teleport
-  Helpers.cs                  Reflection wrappers, XInput (Rewired) button names
+  Helpers.cs                  Typed reflection wrappers, XInput (Rewired) button names
   Extensions.cs               Reflection extension methods (Get, Set, InvokeFunc...)
-  Core/
-    XDebug*.cs                The mod's main manager, one partial class split by topic:
-                              Settings, Hotkeys, Cheats, SpeedMultiplier, DebugTools...
-    XFiles.cs                 Loads the data files in Plugins\P06X and checks the game version
-    XSingleton.cs             Lazy singleton base: finds or creates the manager object
-    XValue.cs                 A setting value that runs a callback when it changes
-    XUtility.cs               XML save/load and small extension helpers
-  Effects/XEffects.cs         Particle and sound effects for the new moves
-  UI/                         The F12 mod menu: XModMenu builds it from XUIMenu,
-                              XUISection and the XUI* controls; XLogBox shows messages
-  XSplashScreens.cs           Debug only: skips the splash screens to a set area
-  XKnuckles.cs                Knuckles patches
   PlayerBase/                 XPlayerBase and its patches
     States/                   WallJump, VDodge (side dodge), WaterRun, WaterSlide, Boost
   SonicNew/                   XSonicNew, patches, Stomp and GetUpX states
   SonicFast/                  XSonicFast, patches, Stomp and SecondJump states
   Shadow/                     XShadow, patches, Stomp and GetUpX states
+  XKnuckles.cs                Knuckles patches
+  XSplashScreens.cs           Debug only: skips the splash screens to a set area
+  Legacy/                     Carried over from the assembly version (see below)
+    Core/XDebug*.cs           The main manager, one partial class split by topic:
+                              Settings, Hotkeys, Cheats, SpeedMultiplier, DebugTools...
+    Core/XFiles.cs            Loads the data files in Plugins\P06X, checks the game version
+    Core/XSingleton.cs        Lazy singleton base: finds or creates the manager object
+    Core/XValue.cs            A setting value that runs a callback when it changes
+    Core/XUtility.cs          XML save/load and small extension helpers
+    Effects/XEffects.cs       Particle and sound effects for the new moves
+    UI/                       The F12 mod menu: XModMenu, XUIMenu, XUISection, XUI* controls
 ```
+
+### The Legacy folder
+
+Before it became a plugin, P-06X was made by editing the game's decompiled assembly in dnSpy. The menu, settings, cheats and effects in `Legacy/` come from that version and were ported almost unchanged, so they still read like decompiler output, with `this.` on every member and very long methods. They are kept because they work; they don't reflect how the rest of the project is written.
+
+The code written for the plugin is in `PlayerBase/`, the character folders and `Helpers.cs`: one small partial class per character and per move, the Harmony patches next to the state they drive, and typed wrappers around reflection.
 
 ## Building
 
-You need Visual Studio 2022 or the Build Tools with the .NET Framework 4.7.2 targeting pack, and a copy of Sonic P-06 with MelonLoader installed. The project compiles against the game's own DLLs, which are not in this repo.
+You need Visual Studio 2022 or the Build Tools with the .NET Framework 4.7.2 targeting pack, and a copy of Sonic P-06 with the mod loader installed. The project compiles against the game's own DLLs, which are not in this repo.
 
 1. Copy `Directory.Build.props.user.example` to `Directory.Build.props.user` and set `P06GameDir` to your game folder. A `P06GameDir` environment variable or `-p:P06GameDir=...` on the msbuild command line also works.
 2. Open `P06X.sln` and build, or run:
@@ -110,13 +115,19 @@ You need Visual Studio 2022 or the Build Tools with the .NET Framework 4.7.2 tar
 
 The build closes the game if it is running, copies `P06Extended.dll` into the game's `Plugins` folder and starts the game again. To build without touching the game, add `-p:PreBuildEvent= -p:PostBuildEvent=`.
 
+### Development notes
+
+- To read the game methods the mod patches, decompile `Sonic the Hedgehog_Data\Managed\Assembly-CSharp.dll` with ILSpy, for example `ilspycmd -p -o <output folder> Assembly-CSharp.dll`. Keep the output out of this repo.
+- Features that haven't been ported yet still exist in the last assembly-edit release, P-06X 1.8.0d for P-06 5.0, linked in the demo video's description. Its decompiled `Assembly-CSharp.dll` is the reference for porting them.
+- Some names are looked up at runtime, so renaming them changes behaviour: the game's state machine finds `State*Start` and `State*End` methods by name, Harmony matches patch parameters by name (`__instance` and the original method's parameter names), and saved settings are keyed by menu item names.
+
 ## Installing
 
-The mod targets P-06 version 1.45 with MelonLoader v0.5.5.
+The mod targets P-06 version 1.45 and runs on MelonLoader v0.5.5, which comes with the Project '06 Mod Loader.
 
-1. Install MelonLoader v0.5.5 into the P-06 folder.
-2. Put `P06Extended.dll` in `<game>\Plugins\`.
-3. Put the mod's data files (`Particle.png`, `custom_music.ogg`, `stomp_land.ogg` and `ring.ogg`) in `<game>\Plugins\P06X\`. The mod shows an error on start if one is missing. It also keeps `xconfig.ini` and `user_settings.xml` in that folder.
+1. Install the Project '06 Mod Loader by extracting it into the game folder.
+2. Download the P-06X Plugin zip linked in the demo video's description and copy the `Plugins` folder from it into the game folder. That puts `P06Extended.dll` in `Plugins\` and the mod's data files (`Particle.png`, `custom_music.ogg`, `stomp_land.ogg`, `ring.ogg` and a few others) in `Plugins\P06X\`. The mod shows an error on start if one of them is missing.
+3. To run a build from this repo, replace `Plugins\P06Extended.dll` with your own. A normal build does this for you.
 4. Start the game. A message confirms the install, and F12 opens the menu.
 
 ## Controls
