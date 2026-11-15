@@ -102,11 +102,11 @@ namespace P06X
             // add new position
             player_prev_position.Enqueue(player.transform.position);
 
-            var v_distance = player.transform.position - player_prev_position.Peek();
+            var distance = player.transform.position - player_prev_position.Peek();
             // optionally (dot product): 
-            //v_distance = Vector3.Project(v_distance, player.transform.forward);
+            //distance = Vector3.Project(distance, player.transform.forward);
 
-            float d = v_distance.magnitude;
+            float d = distance.magnitude;
             float t = Time.fixedDeltaTime * Mathf.Max(1, player_prev_position.Count - 1);
             ActualSpeed = d / t;
 

@@ -36,8 +36,8 @@
             if (I.I.IsGrounded()) return false;
 
             Vector3 vector = default(Vector3);
-            bool is_falling_and_fast_enough = I.I._Rigidbody.velocity.y < 0f && I.Flt["CurSpeed"] > WaterRun.MinActivationSpeed;
-            return is_falling_and_fast_enough && HasWaterBelow(WaterRun.YMaxWaterRaycastDist, ref vector);
+            bool isFallingFastEnough = I.I._Rigidbody.velocity.y < 0f && I.Flt["CurSpeed"] > WaterRun.MinActivationSpeed;
+            return isFallingFastEnough && HasWaterBelow(WaterRun.YMaxWaterRaycastDist, ref vector);
         }
 
         private static void logAllColliders(RaycastHit[] hits)

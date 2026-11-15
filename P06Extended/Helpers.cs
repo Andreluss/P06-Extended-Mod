@@ -85,8 +85,8 @@
          * IIntWrapper["PlayerState"] = (int)SonicNew.State.BoundAttack;
          * 
          * Vector3 airMotionVelocity = I._Rigidbody.velocity;
-         * float lua_boundjump_jmp = ((float)ReflectionExtensions.GetLuaStruct("Sonic_New_Lua")["c_boundjump_jmp"]);
-         * airMotionVelocity.y = lua_boundjump_jmp * 1.5f;
+         * float boundJumpSpeed = ((float)ReflectionExtensions.GetLuaStruct("Sonic_New_Lua")["c_boundjump_jmp"]);
+         * airMotionVelocity.y = boundJumpSpeed * 1.5f;
          * IVector3Wrapper["AirMotionVelocity"] = airMotionVelocity;
          * I._Rigidbody.velocity = airMotionVelocity;
          * 
