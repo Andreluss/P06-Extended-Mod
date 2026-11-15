@@ -117,8 +117,6 @@ namespace P06X
         public float X_GetActualPlayerSpeedForward()
         {
             return Mathf.Floor(ActualSpeed * 100) / 100;
-            //return Vector3.Dot(player._Rigidbody.velocity, player.transform.forward.normalized);
-            //return player._Rigidbody.velocity.magnitude;
         }
 
 

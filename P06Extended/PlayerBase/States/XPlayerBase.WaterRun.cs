@@ -34,7 +34,6 @@
             if (!XDebug.Instance.Moveset_FreeWaterSliding.Value) return false;
             if (XI.WaterRunState.active) return false;
             if (I.I.IsGrounded()) return false;
-            //if (I.I.GetPrefab("snow_board")) return false;
 
             Vector3 vector = default(Vector3);
             bool is_falling_and_fast_enough = I.I._Rigidbody.velocity.y < 0f && I.Flt["CurSpeed"] > WaterRun.MinActivationSpeed;

@@ -33,8 +33,6 @@ namespace P06X
              XSingleton<XEffects>.Instance.CreateStompFX();
 
             Stomp.Destroyed = false;
-            //II.Set("ImmunityTime", Time.time + 9999999f);
-            //II.Set("BlinkTimer", -9999999f);
 
             Debug.Log("StateStompStart");
         }
@@ -110,8 +108,6 @@ namespace P06X
             {
                  XSingleton<XEffects>.Instance.DestroyStompFX(false);
             }
-            //II.Set("BlinkTimer", -4.5f);
-            //II.Set("ImmunityTime", Time.time + 0.33f);
 
             Debug.Log("StateStompEnd");
         }

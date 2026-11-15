@@ -32,9 +32,6 @@
         {
             // decided not to delete, since new playerbase will overwrite the references earlier
             // in the case when there is no new playerbase, the references will not be used anyway? 
-            // XI = null;
-            // I = null;
-            // Debug.Log("Removed reference to XPlayerBase.");
         }
 
 

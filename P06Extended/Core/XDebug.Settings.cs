@@ -120,7 +120,6 @@ namespace P06X
                             {
                                 agl[i] = 0;
                             }
-                            //Array.Fill<int>(XDebug.Finder<UI>.Instance.Get<int[]>("ActiveGemLevel"), 0);
                         }
                     }
                 }

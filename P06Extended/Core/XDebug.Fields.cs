@@ -135,18 +135,6 @@ namespace P06X
         public XValue<string> TeleportLocation;
 
         public ArrayByEnum<CustomSpeedMultiplier.LUASpeedType, XValue<float>> SM = new ArrayByEnum<CustomSpeedMultiplier.LUASpeedType, XValue<float>>();
-        //public XValue<float> SMGround;
-
-        //public XValue<float> SMAir;
-
-        //public XValue<float> SMSpindash;
-
-        //public XValue<float> SMFly;
-
-        //public XValue<float> SMClimb;
-
-        //public XValue<float> SMHoming;
-
         public XValue<bool> ASCSpinClamp;
 
         public XValue<bool> ASCLuaRecalc;

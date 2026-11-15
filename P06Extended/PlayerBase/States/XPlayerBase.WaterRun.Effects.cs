@@ -94,7 +94,6 @@ namespace P06X
             {
                 if (ps != null && ps.isPlaying)
                 {
-                    //ps.emission.enabled = false;
                     ps.Stop(true, ParticleSystemStopBehavior.StopEmitting);
                 }
             }

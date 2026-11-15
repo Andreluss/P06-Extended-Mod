@@ -33,14 +33,12 @@ namespace P06X
             {
                 direction = ((dot >= 0f) ? 1 : (-1));
                 buttonName = XInput.REWIRED_RIGHT_BUMPER;
-                // XSingleton<XDebug>.Instance.JustUsedLeftTrigger = true;
                 return true;
             }
             else if (XInput.Controls.GetButtonDown(XInput.REWIRED_LEFT_BUMPER))
             {
                 direction = ((dot >= 0f) ? (-1) : 1);
                 buttonName = XInput.REWIRED_LEFT_BUMPER;
-                // XSingleton<XDebug>.Instance.JustUsedLeftTrigger = true;
                 return true;
             }
             return false;

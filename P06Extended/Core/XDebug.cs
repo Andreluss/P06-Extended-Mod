@@ -406,7 +406,7 @@ namespace P06X
             }
             XDebug.Comment("check mod files integrity");
             // no longer need to check the p06 version, since we have a plugin mod
-            if (scene.name == "MainMenu" /*&& XSingleton<XFiles>.Instance.Check()*/) 
+            if (scene.name == "MainMenu")
             {
                 XSingleton<XFiles>.Instance.Load();
             }

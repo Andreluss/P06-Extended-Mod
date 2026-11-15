@@ -31,18 +31,6 @@ namespace P06X
         {
             public enum LUASpeedType { Ground, Air, Spindash, Flying, Climb, Homing }
             public static ArrayByEnum<LUASpeedType, float> ByType = new ArrayByEnum<LUASpeedType, float>(1f);
-            //public static float Ground = 1f;
-
-            //public static float Air = 1f;
-
-            //public static float Spindash = 1f;
-
-            //public static float Flying = 1f;
-
-            //public static float Climbing = 1f;
-
-            //public static float Homing = 1f;
-
             public static float HomingAttackTimeShortener = 1f;
 
             public static float AfterHomingRotationSpeed = 1f;

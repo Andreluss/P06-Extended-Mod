@@ -47,7 +47,6 @@ namespace P06X
         public void StateVDodgeStart()
         {
             I.I.SetState("Path");
-            //I.Boo["LockControls"] = true;
             VDodge.IsVDodging = true;
             VDodge.ButtonReleased = false;
             VDodge.Time = Time.time;
@@ -83,20 +82,10 @@ namespace P06X
             //I.I.Animator.CrossFadeInFixedTime("Light Dash", 0.04f); // TODO: check for each player  
             VDodge.RotB = I.Qua["GeneralMeshRotation"] * Quaternion.Euler(0f, 0f, (float)(-VDodgeState.RotAngles * VDodge.Dir));
             XSingleton<XEffects>.Instance.CreateDodgeFX();
-            //I.I.Audio.PlayOneShot(/*XSingleton<XDebug>.Instance.DodgeClipFull*/"DodgeClipFull", I.I.Audio.volume * 1.2f);
         }
         public void StateVDodge()
         {
-            // this is managed by the Rewired_Player_GetButton patch
-            //if (!XInput.Controls.GetButton(VDodge._ButtonName)) {
-            //    VDodge._ButtonReleased = true;
-            //}
-
-            //VDodgeState.Dmin = XDebug.Instance.dbg_floats[0].Value;
-            //VDodgeState.AccDuration = XDebug.Instance.dbg_floats[1].Value;
-            //VDodgeState.RotDuration = XDebug.Instance.dbg_floats[2].Value;
-            //VDodgeState.RotBackDuration = XDebug.Instance.dbg_floats[3].Value;
-            //VDodgeState.Speed = XDebug.Instance.dbg_floats[4].Value;
+            // VDodge.ButtonReleased is set by the Rewired_Player_GetButton patch
 
             float elapsed = Time.time - VDodge.Time;
             if (!VDodge.Stopped)
