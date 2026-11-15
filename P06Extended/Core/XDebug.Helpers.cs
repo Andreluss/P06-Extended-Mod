@@ -91,8 +91,8 @@ namespace P06X
         }
 
         private float ActualSpeed = 0f;
-        private static readonly int n_positions = 10;
-        private Queue<Vector3> player_prev_position = new Queue<Vector3>(n_positions);
+        private static readonly int PositionSampleCount = 10;
+        private Queue<Vector3> _prevPlayerPositions = new Queue<Vector3>(PositionSampleCount);
         private void RecalculateActualSpeed()
         {
             PlayerBase player = XDebug.Finder<PlayerBase>.Instance;
@@ -100,18 +100,18 @@ namespace P06X
             if (Time.fixedDeltaTime <= 0) return;
 
             // add new position
-            player_prev_position.Enqueue(player.transform.position);
+            _prevPlayerPositions.Enqueue(player.transform.position);
 
-            var distance = player.transform.position - player_prev_position.Peek();
+            var distance = player.transform.position - _prevPlayerPositions.Peek();
             // optionally (dot product): 
             //distance = Vector3.Project(distance, player.transform.forward);
 
             float d = distance.magnitude;
-            float t = Time.fixedDeltaTime * Mathf.Max(1, player_prev_position.Count - 1);
+            float t = Time.fixedDeltaTime * Mathf.Max(1, _prevPlayerPositions.Count - 1);
             ActualSpeed = d / t;
 
             // remove the n+1-th last position
-            if (player_prev_position.Count > n_positions) player_prev_position.Dequeue();
+            if (_prevPlayerPositions.Count > PositionSampleCount) _prevPlayerPositions.Dequeue();
         }
 
         public float X_GetActualPlayerSpeedForward()

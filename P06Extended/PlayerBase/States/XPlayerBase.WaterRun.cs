@@ -40,7 +40,7 @@
             return isFallingFastEnough && HasWaterBelow(WaterRun.YMaxWaterRaycastDist, ref vector);
         }
 
-        private static void logAllColliders(RaycastHit[] hits)
+        private static void LogAllColliders(RaycastHit[] hits)
         {
             foreach (var hit in hits)
             {
@@ -75,7 +75,7 @@
                     break;
                 }
             }
-            if (flag) logAllColliders(array);
+            if (flag) LogAllColliders(array);
             return flag;
         }
 
