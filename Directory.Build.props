@@ -1,0 +1,20 @@
+﻿<Project>
+  <!--
+    Location of the Sonic P-06 game install that the mod builds against.
+    Set it in one of these ways (first match wins):
+      1. Directory.Build.props.user next to this file (untracked; copy Directory.Build.props.user.example)
+      2. The P06GameDir environment variable
+      3. msbuild -p:P06GameDir="C:\path\to\Sonic the Hedgehog (P-06)"
+  -->
+  <Import Project="$(MSBuildThisFileDirectory)Directory.Build.props.user" Condition="Exists('$(MSBuildThisFileDirectory)Directory.Build.props.user')" />
+
+  <PropertyGroup>
+    <P06GameDir Condition="'$(P06GameDir)' != '' and !HasTrailingSlash('$(P06GameDir)')">$(P06GameDir)\</P06GameDir>
+    <P06ManagedDir>$(P06GameDir)Sonic the Hedgehog_Data\Managed\</P06ManagedDir>
+  </PropertyGroup>
+
+  <Target Name="CheckP06GameDir" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(P06GameDir)' == ''" Text="P06GameDir is not set. Copy Directory.Build.props.user.example to Directory.Build.props.user and point it at your Sonic P-06 install." />
+    <Error Condition="'$(P06GameDir)' != '' and !Exists('$(P06ManagedDir)Assembly-CSharp.dll')" Text="P06GameDir is set to '$(P06GameDir)', but '$(P06ManagedDir)Assembly-CSharp.dll' was not found." />
+  </Target>
+</Project>

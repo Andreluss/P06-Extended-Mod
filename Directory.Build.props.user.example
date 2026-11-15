@@ -1,0 +1,6 @@
+﻿<Project>
+  <!-- Copy this file to Directory.Build.props.user (untracked) and set your game folder. -->
+  <PropertyGroup>
+    <P06GameDir>C:\Games\Sonic the Hedgehog (P-06)\</P06GameDir>
+  </PropertyGroup>
+</Project>
