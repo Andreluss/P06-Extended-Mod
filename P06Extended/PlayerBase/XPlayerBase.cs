@@ -36,7 +36,7 @@
 
 
         // ------------------------------- Helpers -------------------------------
-        
+
 
         private static bool CheckGameState()
         {

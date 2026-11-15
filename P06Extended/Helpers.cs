@@ -263,7 +263,7 @@
         public ReflectionWrapper<Quaternion> Qua;
         public ReflectionWrapper<PlayerCamera> PCa;
         public ReflectionWrapper<RaycastHit> RcH;
-        
+
         public ReflectionAccessor(TCharacter instance)
         {
             I = instance;

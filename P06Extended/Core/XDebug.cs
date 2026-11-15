@@ -86,7 +86,7 @@ namespace P06X
 
         private void FixedUpdate()
         {
-            if (Extra_DisplaySpeedo.Value) 
+            if (Extra_DisplaySpeedo.Value)
                 RecalculateActualSpeed();
         }
 
@@ -182,7 +182,7 @@ namespace P06X
             {
             18, 26, 41, 43, 49, 50, 59, 75, 77, 80,
             107, 112, 119, 122, 125, 129
-            }; 
+            };
             this.SpeedMultiplier = 1f;
             this.Box_EndTime = 9999f;
             this.SRs = new List<Renderer>();
@@ -410,7 +410,7 @@ namespace P06X
             {
                 XSingleton<XFiles>.Instance.Load();
             }
-            if(scene.name == "MainMenu")
+            if (scene.name == "MainMenu")
                 XSingleton<XDebug>.Instance.Log("P-06<color=#00ee00>X</color>" + XDebug.P06X_VERSION + " Plugin by 4ndrelus", 20f, 13.8f);
             XDebug.Comment("custom music check and update");
             if (this.PlayCustomMusic.Value)

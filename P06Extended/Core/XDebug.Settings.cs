@@ -236,7 +236,7 @@ namespace P06X
                     this.Log(string.Format("<color=#d214fc>cstm_spd_{0}</color> = {1}", speedType.ToString().ToLower(), x), 1.25f, 16f);
                 }, 1f);
             }
-            
+
             this.SMHomingAttackFasterBy = new XValue<float>(delegate (float x)
             {
                 XDebug.CustomSpeedMultiplier.HomingAttackTimeShortener = 1f / x;

@@ -64,7 +64,8 @@ namespace P06X
 
                     XDebug.Comment("Adjust forward rotation to camera automatically");
                     XDebug.Comment("This works only in Crisis City E --> to prevent sudden flying off the road");
-                    if (Vector3.Angle(vector, Vector3.ProjectOnPlane(base.transform.forward, I.RcH["RaycastHit"].normal)) > 5f) {
+                    if (Vector3.Angle(vector, Vector3.ProjectOnPlane(base.transform.forward, I.RcH["RaycastHit"].normal)) > 5f)
+                    {
                         XDebug.Comment(string.Format("<color=#ee6600>Adjusted direction by {0} deg</color>", Vector3.Angle(vector, Vector3.ProjectOnPlane(base.transform.forward, I.RcH["RaycastHit"].normal))));
                     }
                 }
@@ -77,7 +78,7 @@ namespace P06X
             Vector3 normalized = Vector3.ProjectOnPlane(Vector3.Cross(I.Vec["UpMeshRotation"], I.Vec["ForwardMeshRotation"]), I.RcH["RaycastHit"].normal).normalized;
             VDodge.MaxSideVel = RealRight() * (float)VDodge.Dir * VDodgeState.Speed;
             I.Vec["AirMotionVelocity"] = I.I._Rigidbody.velocity;
-            
+
             VDodge.RotA = I.Qua["GeneralMeshRotation"];
             //I.I.Animator.CrossFadeInFixedTime("Light Dash", 0.04f); // TODO: check for each player  
             VDodge.RotB = I.Qua["GeneralMeshRotation"] * Quaternion.Euler(0f, 0f, (float)(-VDodgeState.RotAngles * VDodge.Dir));

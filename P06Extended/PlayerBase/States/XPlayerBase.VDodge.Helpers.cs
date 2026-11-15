@@ -12,9 +12,10 @@ namespace P06X
         public Vector3 RealRight()
         {
             Vector3 groundNormal = I.RcH["RaycastHit"].normal;
-            if (groundNormal == Vector3.zero) {
+            if (groundNormal == Vector3.zero)
+            {
                 return I.I.transform.right;
-            } 
+            }
             return Vector3.ProjectOnPlane(Vector3.Cross(groundNormal, I.I.transform.forward), groundNormal).normalized;
         }
 

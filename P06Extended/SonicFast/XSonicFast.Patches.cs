@@ -44,16 +44,16 @@
                 bool cond2 = __instance.Get<SonicFast.State>("PlayerState").IsInList(
                                 SonicFast.State.Spring, SonicFast.State.WideSpring, SonicFast.State.JumpPanel,
                                 SonicFast.State.RainbowRing)
-                                && !__instance.Get<bool>("LockControls") || 
+                                && !__instance.Get<bool>("LockControls") ||
                              __instance.Get<SonicFast.State>("PlayerState").IsInList(
                                 SonicFast.State.Jump, SonicFast.State.Air) ||
-                             __instance.Get<SonicFast.State>("PlayerState") == SonicFast.State.BoundAttack 
+                             __instance.Get<SonicFast.State>("PlayerState") == SonicFast.State.BoundAttack
                                 && __instance.Get<int>("BoundState") != 42;
 
                 return cond1 && cond2;
             }
 
-            
+
             public static void Postfix(SonicFast __instance)
             {
                 // ensure the extension code is actually attached

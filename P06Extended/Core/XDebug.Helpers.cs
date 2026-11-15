@@ -89,7 +89,7 @@ namespace P06X
                 this.Speedo_GameObject.SetActive(false);
             }
         }
-         
+
         private float ActualSpeed = 0f;
         private static readonly int n_positions = 10;
         private Queue<Vector3> player_prev_position = new Queue<Vector3>(n_positions);

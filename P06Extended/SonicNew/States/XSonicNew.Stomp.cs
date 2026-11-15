@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using static MelonLoader.MelonLogger;
 
-namespace P06X 
+namespace P06X
 {
     public partial class XSonicNew
     {
@@ -30,7 +30,7 @@ namespace P06X
 
             II.Get<AudioSource>("Audio").PlayOneShot(II.SpinDashShoot,
                 II.Get<AudioSource>("Audio").volume * 0.5f);
-             XSingleton<XEffects>.Instance.CreateStompFX();
+            XSingleton<XEffects>.Instance.CreateStompFX();
 
             Stomp.Destroyed = false;
 
@@ -62,7 +62,7 @@ namespace P06X
                     II.Set("CurSpeed", II.Get<float>("CurSpeed") * num * Stomp.SpeedMult);
 
                     II.StateMachine.ChangeState(II.GetState("StateSpinDash"));
-                     XSingleton<XEffects>.Instance.DestroyStompFX(true);
+                    XSingleton<XEffects>.Instance.DestroyStompFX(true);
                     Stomp.Destroyed = true;
                 }
                 else
@@ -106,7 +106,7 @@ namespace P06X
         {
             if (!Stomp.Destroyed)
             {
-                 XSingleton<XEffects>.Instance.DestroyStompFX(false);
+                XSingleton<XEffects>.Instance.DestroyStompFX(false);
             }
 
             Debug.Log("StateStompEnd");
