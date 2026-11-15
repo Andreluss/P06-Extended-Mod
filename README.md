@@ -78,8 +78,15 @@ P06Extended/
   XCommon.cs                  Version, data folder path, section teleport
   Helpers.cs                  Reflection wrappers, XInput (Rewired) button names
   Extensions.cs               Reflection extension methods (Get, Set, InvokeFunc...)
-  Controls.cs                 Mod menu, settings, cheats, effects and file loading
-                              (XDebug, XModMenu, XUI*, XEffects, XFiles, XValue<T>)
+  Core/
+    XDebug.cs                 Settings, cheats, speed multipliers, debug hotkeys and overlay
+    XFiles.cs                 Loads the data files in Plugins\P06X and checks the game version
+    XSingleton.cs             Lazy singleton base: finds or creates the manager object
+    XValue.cs                 A setting value that runs a callback when it changes
+    XUtility.cs               XML save/load and small extension helpers
+  Effects/XEffects.cs         Particle and sound effects for the new moves
+  UI/                         The F12 mod menu: XModMenu builds it from XUIMenu,
+                              XUISection and the XUI* controls; XLogBox shows messages
   XSplashScreens.cs           Debug only: skips the splash screens to a set area
   XKnuckles.cs                Knuckles patches
   PlayerBase/                 XPlayerBase and its patches

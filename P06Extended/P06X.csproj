@@ -115,7 +115,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls.cs" />
+    <Compile Include="Core\XDebug.cs" />
+    <Compile Include="Effects\XEffects.cs" />
+    <Compile Include="Core\XFiles.cs" />
+    <Compile Include="UI\XLogBox.cs" />
+    <Compile Include="UI\XModMenu.cs" />
+    <Compile Include="Core\XSingleton.cs" />
+    <Compile Include="UI\XUIConfig.cs" />
+    <Compile Include="UI\XUIFloatAdjuster.cs" />
+    <Compile Include="UI\XUIFunctionButton.cs" />
+    <Compile Include="UI\XUIItem.cs" />
+    <Compile Include="UI\XUIMenu.cs" />
+    <Compile Include="UI\XUISection.cs" />
+    <Compile Include="UI\XUIStringInput.cs" />
+    <Compile Include="UI\XUIToggleButton.cs" />
+    <Compile Include="Core\XUtility.cs" />
+    <Compile Include="Core\XValue.cs" />
     <Compile Include="PlayerBase\States\XPlayerBase.WaterRun.Effects.cs" />
     <Compile Include="PlayerBase\States\XPlayerBase.WaterSlide.Patches.cs" />
     <Compile Include="PlayerBase\States\XPlayerBase.WaterSlide.State.cs" />
